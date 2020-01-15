@@ -1,0 +1,20 @@
+<h1> register </h1>
+
+<p><a href="{% url 'home'%}">Home</a></p>
+<br><br>
+<form method="POST">
+    {% csrf_token %}
+    Username:<br>
+    <input type="text" name="username">
+    <br>
+    Password:<br>
+    <input type="text" name="password">
+    <br>
+    Name:<br>
+    <input type="text" name="name">
+    <br>
+    <!-- Profile Image:<br>
+    <input type="file" name="name">
+    <br> -->
+    <input type="submit" value="Submit">
+</form>

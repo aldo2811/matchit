@@ -1,0 +1,14 @@
+<h1> login </h1>
+
+<p><a href="{% url 'home'%}">Home</a></p>
+<br><br>
+<form method="POST">
+    {% csrf_token %}
+    Username:<br>
+    <input type="text" name="username">
+    <br>
+    Password:<br>
+    <input type="text" name="password">
+    <br>
+    <input type="submit" value="Submit">
+</form>

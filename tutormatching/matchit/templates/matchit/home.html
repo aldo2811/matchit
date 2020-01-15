@@ -1,0 +1,18 @@
+<h1> Tutor matching </h1>
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+<h3>Hi {{ user.profile.name }}!</h3>
+<p><a href="{% url 'logout' %}">logout</a></p>
+<br><br>
+<p><a href="{% url 'addtutor'%}">Add Request</a></p>
+<br><br>
+<p><a href="{% url 'listRequest'%}">List of Request</a></p>
+{% else %}
+<p>You are not logged in</p>
+<a href="{% url 'login' %}">Login</a>
+<br><br>
+<p><a href="{% url 'register'%}">Register</a></p>
+<br><br>
+{% endif %}
+{% endblock %}

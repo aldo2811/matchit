@@ -1,0 +1,14 @@
+<h1> Add request here </h1>
+
+<p><a href="{% url 'home'%}">Home</a></p>
+<br><br>
+<form method="POST">
+    {% csrf_token %}
+    course:<br>
+    <input type="text" name="course_code">
+    <br>
+    role: (student/teacher)<br>
+    <input type="text" name="role">
+    <br>
+    <input type="submit" value="Submit">
+</form>
