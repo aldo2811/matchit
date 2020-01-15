@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from django.template import loader
+from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.models import User, auth
+from django.urls  import reverse_lazy
 from .models import Profile, RequestTutor
 
 def addRequest(request):
@@ -19,19 +20,16 @@ def addRequest(request):
 def home(request):
     return render(request, 'home.html')
 
-def login(request):
-    if request.method == "POST":
-        username = request.POST['username']
-        password = request.POST['password']
-        
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request,user)
-            return redirect('home')
-        else:
-            return redirect('login')
-    else:
-        return render(request, 'login.html')
+class login(LoginView):
+    template_name="matchit/login.html"
+    def get_success_url(self):
+        return reverse_lazy('home')
+
+class logout(LogoutView):
+    template_name="matchit/login.html"
+    def get_next_page(self):
+        return reverse_lazy('home')
+
 
 def register(request):
     if request.method == "POST":
@@ -58,6 +56,3 @@ def listRequest(request):
     print(results)
     return render(request, 'request.html', {'results': results})
 
-def logout(request):
-    auth.logout(request)
-    return redirect('home')
