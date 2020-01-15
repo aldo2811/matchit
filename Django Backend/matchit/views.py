@@ -29,7 +29,6 @@ def login(request):
             auth.login(request,user)
             return redirect('home')
         else:
-            messages.info(request, 'Invalid username or password')
             return redirect('login')
     else:
         return render(request, 'login.html')
@@ -49,6 +48,7 @@ def register(request):
         # image = request.POST['image']
         profile = Profile(user=user, name = name)
         profile.save()
+        auth.login(request,user)
         return redirect('home')
     else:
         return render(request, 'register.html')

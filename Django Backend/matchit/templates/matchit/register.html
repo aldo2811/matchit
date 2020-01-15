@@ -1,6 +1,5 @@
 <h1> register </h1>
 
-<p><a href="{% url 'home'%}">Home</a></p>
 <br><br>
 <form method="POST">
     {% csrf_token %}
@@ -18,3 +17,5 @@
     <br> -->
     <input type="submit" value="Submit">
 </form>
+
+<p><a href="{% url 'login'%}">Log in</a></p>
