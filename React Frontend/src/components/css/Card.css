@@ -1,0 +1,74 @@
+#board {
+  width: 320px;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  overflow: hidden;
+}
+
+#cards {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 1%;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+#buttons {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theButton {
+  background-color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 0px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
+  margin: 20px;
+  cursor: pointer;
+  transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: 800;
+}
+
+.theButton:hover {
+  transform: scale(1.02);
+}
+
+.noBut {
+  color: red;
+  transition: 0.5s;
+}
+
+.yesBut {
+  color: green;
+  transition: 0.5s;
+}
+
+.noBut:hover {
+  background-color: red;
+  color: white;
+}
+
+.yesBut:hover {
+  background-color: green;
+  color: white;
+}
