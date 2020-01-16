@@ -1,36 +1,35 @@
 import React, { Component } from "react";
+import {BrowserRouter as Router,
+  Switch,
+  Route,
+  Link} from 'react-router-dom'
 
 import Card from "./Card";
+import Registration from './Registration'
+import Information from './Information'
 
 import "./css/Card.css";
 
 class Cards extends Component {
   state = {
-    cards: [
-      {
-        name: "error",
-        id: 2
-      },
-      {
-        name: "error2",
-        id: 3
-      },
-      {
-        name: "error3",
-        id: 4
-      },
-      {
-        name: "error4",
-        id: 5
-      }
-    ],
+    cards: [],
     currentId: 0
   };
 
   componentDidMount() {
-    this.setState({
-      currentId: this.state.cards[this.state.cards.length - 1].id
-    });
+    fetch("http://127.0.0.1:8000/matchit/request/")
+      .then(res => res.json())
+      .then(res=>{
+        console.log(res)
+        this.setState({
+          cards:res
+        }, () => {      
+        this.setState({
+          currentId: this.state.cards[this.state.cards.length - 1].id
+        });
+        });
+      })
+    
   }
 
   noBut = () => {
@@ -62,11 +61,17 @@ class Cards extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      
         <div id="board">
+          
+          
+          
+          <div id="register">
+            <button>Register as Tutor</button>
+          </div>
           <div id="cards">
             {this.state.cards.map((el, i) => {
-              return <Card key={el.id} name={el.name}></Card>;
+              return <Card key={el.id} name={el.fields.course_code}></Card>;
             })}
           </div>
           <div id="buttons">
@@ -78,7 +83,9 @@ class Cards extends Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+          
+        
+      
     );
   }
 }
