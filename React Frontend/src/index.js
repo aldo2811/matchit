@@ -3,6 +3,6 @@ import ReactDOM from "react-dom";
 
 import "./index.css";
 
-import Cards from "./components/Cards";
+import App from './App'
 
-ReactDOM.render(<Cards></Cards>, document.getElementById("root"));
+ReactDOM.render(<App></App>, document.getElementById("root"));
