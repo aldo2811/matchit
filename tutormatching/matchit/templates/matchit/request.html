@@ -18,8 +18,7 @@
         <tr>
             <td class="text-left"> {{ result.course_code }} </td>
             <td class="text-left"> {{ result.role }} </td>
-			<td><img src="{{ result.image_url }}" width="300"></td>
-			{% comment %} <td><img src="{{ results.image_url }}" width = "300"></td> testing purpose {% endcomment %}
+			<td><img src="{{ result.person.image_url }}" width="300"></td>
         </tr>
         {% endfor%}
 	</tbody>

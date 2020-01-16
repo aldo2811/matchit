@@ -4,6 +4,7 @@
   left: 50%;
   transform: translateX(-50%);
   position: relative;
+  overflow: hidden;
 }
 
 #cards {
@@ -99,16 +100,4 @@
 #register > button:hover {
   background-color: #4bb6f4;
   color: white;
-}
-
-.swiped-right {
-  transition: 1s;
-  transform: translateX(500px) translateY(10px) rotateZ(30deg);
-  opacity: 0;
-}
-
-.swiped-left {
-  transition: 1s;
-  transform: translateX(-500px) translateY(10px) rotateZ(30deg);
-  opacity: 0;
 }

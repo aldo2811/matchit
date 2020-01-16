@@ -8,8 +8,7 @@ import "./css/Card.css";
 class Cards extends Component {
   state = {
     cards: [],
-    currentId: 0,
-    isSwiped: ""
+    currentId: 0
   };
 
   componentDidMount() {
@@ -32,20 +31,12 @@ class Cards extends Component {
 
   noBut = () => {
     console.log(`no ${this.state.currentId}`);
-    this.setState({ isSwiped: "l" }, () => {
-      setTimeout(() => {
-        this.updateCards();
-      }, 1000);
-    });
+    this.updateCards();
   };
 
   yesBut = () => {
     console.log(`yes ${this.state.currentId}`);
-    this.setState({ isSwiped: "r" }, () => {
-      setTimeout(() => {
-        this.updateCards();
-      }, 1000);
-    });
+    this.updateCards();
   };
 
   updateCards = () => {
@@ -83,17 +74,7 @@ class Cards extends Component {
         </div>
         <div id="cards">
           {this.state.cards.map((el, i) => {
-            if (this.state.isSwiped && el.pk === this.state.currentId) {
-              return (
-                <Card
-                  key={el.pk}
-                  name={el.fields.course_code}
-                  dir={this.state.isSwiped}
-                ></Card>
-              );
-            } else {
-              return <Card key={el.pk} name={el.fields.course_code}></Card>;
-            }
+            return <Card key={el.pk} name={el.fields.course_code}></Card>;
           })}
         </div>
         <div id="buttons">

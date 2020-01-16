@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-import Cards from './components/Cards'
+import Cards from "./components/Cards";
 
 class App extends Component {
   render() {
