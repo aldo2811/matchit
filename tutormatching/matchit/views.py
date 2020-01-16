@@ -58,10 +58,16 @@ def register(request):
         return render(request, 'register.html')
 
 def listRequest(request):
+    # return in JSON
+
     results = list(RequestTutor.objects.filter(satisfied = "No"))
     results_json = serializers.serialize('json', results)
     print(results)
     return HttpResponse(results_json)
+
+    # to render without react
+    # results = RequestTutor.objects.filter(satisfied = "No")
+    # return render(request, 'request.html', {'results':results})       
 
 def logout(request):
     auth.logout(request)
