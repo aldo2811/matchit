@@ -11,7 +11,7 @@
   width: 100%;
   height: 60%;
   position: relative;
-  margin-top: 30px;
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 
@@ -54,50 +54,21 @@
 }
 
 .noBut {
-  color: #e21852;
+  color: red;
   transition: 0.5s;
 }
 
 .yesBut {
-  color: #25db9e;
+  color: green;
   transition: 0.5s;
 }
 
 .noBut:hover {
-  background-color: #e21852;
+  background-color: red;
   color: white;
 }
 
 .yesBut:hover {
-  background-color: #25db9e;
-  color: white;
-}
-
-#register {
-  width: 100%;
-  height: fit-content;
-}
-
-#register > button {
-  margin-top: 50px;
-  background-color: white;
-  width: 100%;
-  height: 60px;
-  border-radius: 5%;
-  border: 0px;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: 0.5s;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.1em;
-  font-weight: 800;
-  color: #4bb6f4;
-  font-family: "Roboto", sans-serif !important;
-}
-
-#register > button:hover {
-  background-color: #4bb6f4;
+  background-color: green;
   color: white;
 }
