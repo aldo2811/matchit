@@ -5,8 +5,6 @@ import {BrowserRouter as Router,
   Link} from 'react-router-dom'
 
 import Card from "./Card";
-import Registration from './Registration'
-import Information from './Information'
 
 import "./css/Card.css";
 

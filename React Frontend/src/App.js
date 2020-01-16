@@ -5,8 +5,6 @@ import {BrowserRouter as Router,
     Link} from 'react-router-dom'
 
 import Cards from './components/Cards'
-import Registration from './components/Registration'
-import Information from './components/Information'
 
 class App extends Component {
     render(){
