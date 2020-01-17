@@ -15,6 +15,7 @@ class RegisForm extends Component {
     e.preventDefault();
   };
 
+<<<<<<< HEAD
   render() {
     return (
       <div className="form-wrapper">
@@ -28,6 +29,21 @@ class RegisForm extends Component {
               onChange={e => this.setState({ name: e.target.value })}
             />
           </Form.Group>
+=======
+    render() {
+        return(
+            <div className="form-wrapper">
+                <h2>Tutor Registration</h2>
+                <Form className="form" onSubmit={this.handleSubmit}>
+                    <Form.Group controlId="name">
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control
+                            placeholder="Name"
+                            value={this.state.name}
+                            onChange={e => this.setState({name: e.target.value})}
+                        />
+                    </Form.Group>
+>>>>>>> ea86678ebaf9034ffb295cb7152f93e2c10836e7
 
           <Form.Group controlId="email">
             <Form.Label>Email</Form.Label>
