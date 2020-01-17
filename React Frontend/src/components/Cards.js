@@ -5,6 +5,7 @@ import Card from "./Card";
 
 import "./css/Card.css";
 import LoginPage from "./LoginPage";
+import DialogBox from "./DialogBox";
 
 class Cards extends Component {
   state = {
@@ -17,7 +18,8 @@ class Cards extends Component {
         contact_no: "empty"
       }
     },
-    swipe: ""
+    prevCard: {},
+    isYes: false
   };
 
   componentDidMount() {
@@ -45,15 +47,10 @@ class Cards extends Component {
   };
 
   yesBut = () => {
-    alert(
-      "Course Code: " +
-        this.state.curCard.fields.course_code +
-        "\nEmail: " +
-        this.state.curCard.fields.email +
-        "\nPhone: " +
-        this.state.curCard.fields.contact_no
-    );
     this.updateCards();
+    this.setState({ prevCard: this.state.curCard }, () => {
+      this.setState({ isYes: true });
+    });
   };
 
   updateCards = () => {
@@ -65,9 +62,23 @@ class Cards extends Component {
     });
   };
 
+  dialogBoxClose = () => {
+    this.setState({ isYes: false });
+  };
+
   cards = () => {
     return (
       <div id="board">
+        {this.state.isYes && (
+          <DialogBox
+            image_url={this.state.prevCard.fields.image_url}
+            course_code={this.state.prevCard.fields.course_code}
+            email={this.state.prevCard.fields.email}
+            contact_no={this.state.prevCard.fields.contact_no}
+            dialogBoxClose={this.dialogBoxClose}
+          ></DialogBox>
+        )}
+
         <div id="register">
           <Link to="/registration">
             <button>Register as Tutor</button>
