@@ -33,6 +33,8 @@ class logout(LogoutView):
 
 def register(request):
     if request.method == "POST":
+        return HttpResponse("hello")
+        print('twf')
         username = request.POST['username']
         password = request.POST['password']
 

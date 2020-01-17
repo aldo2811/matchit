@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from django.views.decorators.csrf import csrf_exempt
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -29,6 +30,20 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# CSRF_USE_SESSION = False
+# CSRF_COOKIE_HTTPONLY = False
+# CSRF_COOKIE_NAME = "bisadong"
+# CSRF_COOKIE_SECURE = False
+CSRF_HEADER_NAME = "X-CSRFToken"
+CSRF_USE_SESSIONS = False
+CSRF_COOKIE_HTTPONLY = False
+
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_HEADERS = (
+    'content-type',
+    'X-CSRFTOKEN'
+)
+CORS_ALLOW_CREDENTIALS = True
 
 INSTALLED_APPS = [
     'matchit.apps.MatchitConfig',
@@ -38,16 +53,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.BrokenLinkEmailsMiddleware',
 ]
 
 ROOT_URLCONF = 'tutormatching.urls'
