@@ -4,7 +4,8 @@ import "./css/Card.css";
 
 class Card extends Component {
   state = {
-    classes: "card"
+    classes: "card",
+    isOpen: false
   };
 
   swipe = dir => {
