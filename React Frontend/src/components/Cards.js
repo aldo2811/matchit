@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Card from "./Card";
 
 import "./css/Card.css";
+import RegisForm from "./RegisForm";
 
 class Cards extends Component {
   state = {
@@ -51,11 +52,15 @@ class Cards extends Component {
     });
   };
 
-  render() {
+  cards = () => {
     return (
       <div id="board">
         <div id="register">
-          <button>Register as Tutor</button>
+          <button>
+            <Link to="/registration">
+              Register as Tutor
+            </Link>
+          </button>
         </div>
         <div id="cards">
           <Card name={this.state.curCard.fields.course_code}></Card>
@@ -69,6 +74,15 @@ class Cards extends Component {
           </div>
         </div>
       </div>
+    )
+  };
+
+  render() {
+    return (
+      <Router>
+        <Route exact path="/" component={this.cards} />
+        <Route exact path="/registration" component={RegisForm} />
+      </Router>
     );
   }
 }
