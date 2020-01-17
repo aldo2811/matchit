@@ -21,7 +21,7 @@ class RegisForm extends Component {
                 <h2>Tutor Registration</h2>
                 <Form className="form" onSubmit={this.handleSubmit}>
                     <Form.Group controlId="name">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label>Name</Form.Label>
                         <Form.Control
                             placeholder="Name"
                             value={this.state.name}
