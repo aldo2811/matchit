@@ -30,6 +30,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 CORS_ORIGIN_ALLOW_ALL = True
+CSRF_COOKIE_NAME = "csrftoken"
+CSRF_HEADER_NAME = 'X-CSRFTOKEN'
+CORS_ALLOW_HEADERS = (
+    'csrftoken',
+    'content-type',
+    'X-CSRFTOKEN'
+)
 
 INSTALLED_APPS = [
     'matchit.apps.MatchitConfig',

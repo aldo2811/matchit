@@ -40,6 +40,7 @@ def login(request):
 
 def register(request):
     if request.method == "POST":
+        print('twf')
         username = request.POST['username']
         password = request.POST['password']
 

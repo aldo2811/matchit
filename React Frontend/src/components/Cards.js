@@ -9,7 +9,7 @@ class Cards extends Component {
   state = {
     cards: [],
     curCard: { fields: { course_code: "empty" } },
-    swipedCard: { fields: { course_code: "empty" } }
+    swipe: ""
   };
 
   componentDidMount() {
@@ -58,7 +58,10 @@ class Cards extends Component {
           <button>Register as Tutor</button>
         </div>
         <div id="cards">
-          <Card name={this.state.curCard.fields.course_code}></Card>
+          <Card
+            name={this.state.curCard.fields.course_code}
+            dir={this.state.swipe}
+          ></Card>
         </div>
         <div id="buttons">
           <div className="theButton noBut" onClick={this.noBut}>
