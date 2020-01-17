@@ -8,8 +8,8 @@ import "./css/Card.css";
 class Cards extends Component {
   state = {
     cards: [],
-    currentId: 0,
-    isSwiped: ""
+    curCard: { fields: { course_code: "empty" } },
+    swipedCard: { fields: { course_code: "empty" } }
   };
 
   componentDidMount() {
@@ -22,8 +22,10 @@ class Cards extends Component {
             cards: res
           },
           () => {
+            console.log(this.state.cards[this.state.cards.length - 1]);
             this.setState({
-              currentId: this.state.cards[this.state.cards.length - 1].pk
+              curCard: this.state.cards[this.state.cards.length - 1],
+              cards: this.state.cards.slice(0, this.state.cards.length - 1)
             });
           }
         );
@@ -32,47 +34,21 @@ class Cards extends Component {
 
   noBut = () => {
     console.log(`no ${this.state.currentId}`);
-    this.setState({ isSwiped: "l" }, () => {
-      setTimeout(() => {
-        this.updateCards();
-      }, 1000);
-    });
+    this.updateCards();
   };
 
   yesBut = () => {
     console.log(`yes ${this.state.currentId}`);
-    this.setState({ isSwiped: "r" }, () => {
-      setTimeout(() => {
-        this.updateCards();
-      }, 1000);
-    });
+    this.updateCards();
   };
 
   updateCards = () => {
-    this.setState(
-      {
-        cards: this.state.cards.filter(el => el.pk !== this.state.currentId)
-      },
-      () => {
-        try {
-          this.setState({
-            currentId: this.state.cards[this.state.cards.length - 1].pk
-          });
-        } catch {
-          this.setState({
-            cards: [
-              {
-                name: "empty",
-                pk: 0,
-                fields: {
-                  course_code: "empty"
-                }
-              }
-            ]
-          });
-        }
-      }
-    );
+    this.setState({
+      curCard: this.state.cards[this.state.cards.length - 1]
+        ? this.state.cards[this.state.cards.length - 1]
+        : { fields: { course_code: "empty" } },
+      cards: this.state.cards.slice(0, this.state.cards.length - 1)
+    });
   };
 
   render() {
@@ -82,19 +58,7 @@ class Cards extends Component {
           <button>Register as Tutor</button>
         </div>
         <div id="cards">
-          {this.state.cards.map((el, i) => {
-            if (this.state.isSwiped && el.pk === this.state.currentId) {
-              return (
-                <Card
-                  key={el.pk}
-                  name={el.fields.course_code}
-                  dir={this.state.isSwiped}
-                ></Card>
-              );
-            } else {
-              return <Card key={el.pk} name={el.fields.course_code}></Card>;
-            }
-          })}
+          <Card name={this.state.curCard.fields.course_code}></Card>
         </div>
         <div id="buttons">
           <div className="theButton noBut" onClick={this.noBut}>
