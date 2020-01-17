@@ -56,15 +56,14 @@ class Cards extends Component {
     return (
       <div id="board">
         <div id="register">
-          <button>
-            <Link to="/registration">
-              Register as Tutor
-            </Link>
-          </button>
+          <Link to="/registration">
+            <button>Register as Tutor</button>
+          </Link>
         </div>
         <div id="cards">
           <Card
             name={this.state.curCard.fields.course_code}
+            content={this.state.curCard}
             dir={this.state.swipe}
           ></Card>
         </div>
@@ -77,7 +76,7 @@ class Cards extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   };
 
   render() {
