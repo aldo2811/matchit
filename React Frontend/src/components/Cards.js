@@ -17,8 +17,7 @@ class Cards extends Component {
         contact_no: "empty"
       }
     },
-    swipe: "",
-    currentId: ""
+    swipe: ""
   };
 
   componentDidMount() {
@@ -42,12 +41,18 @@ class Cards extends Component {
   }
 
   noBut = () => {
-    console.log(`no ${this.state.currentId}`);
     this.updateCards();
   };
 
   yesBut = () => {
-    console.log(`yes ${this.state.currentId}`);
+    alert(
+      "Course Code: " +
+        this.state.curCard.fields.course_code +
+        "\nEmail: " +
+        this.state.curCard.fields.email +
+        "\nPhone: " +
+        this.state.curCard.fields.contact_no
+    );
     this.updateCards();
   };
 
@@ -74,6 +79,7 @@ class Cards extends Component {
             image_url={this.state.curCard.fields.image_url}
             content={this.state.curCard}
             dir={this.state.swipe}
+            isOpen={this.state.isOpen}
           ></Card>
         </div>
         <div id="buttons">

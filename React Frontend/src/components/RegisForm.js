@@ -14,7 +14,6 @@ class RegisForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
   };
-
   render() {
     return (
       <div className="form-wrapper">

@@ -4,7 +4,8 @@ import "./css/Card.css";
 
 class Card extends Component {
   state = {
-    classes: "card"
+    classes: "card",
+    isOpen: false
   };
 
   swipe = dir => {
@@ -18,6 +19,7 @@ class Card extends Component {
 
   componentWillReceiveProps() {
     this.swipe(this.props.dir);
+    this.setState({ isOpen: this.props.isOpen });
   }
 
   render() {
@@ -28,9 +30,13 @@ class Card extends Component {
     };
     return (
       <React.Fragment>
-        <div className={this.state.classes} style={style}>
-          <div className="course-code">{this.props.course_code}</div>
-        </div>
+        {!this.state.isOpen ? (
+          <div className={this.state.classes} style={style}>
+            <div className="course-code">{this.props.course_code}</div>
+          </div>
+        ) : (
+          <div>a</div>
+        )}
       </React.Fragment>
     );
   }
