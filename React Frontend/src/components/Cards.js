@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Card from "./Card";
 
 import "./css/Card.css";
-import RegisForm from "./RegisForm";
+import LoginPage from "./LoginPage";
 
 class Cards extends Component {
   state = {
@@ -92,7 +92,7 @@ class Cards extends Component {
     return (
       <Router>
         <Route exact path="/" component={this.cards} />
-        <Route exact path="/registration" component={RegisForm} />
+        <Route exact path="/registration" component={LoginPage} />
       </Router>
     );
   }
