@@ -21,9 +21,16 @@ class Card extends Component {
   }
 
   render() {
+    const style = {
+      backgroundImage: `url(${this.props.image_url})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center"
+    };
     return (
       <React.Fragment>
-        <div className={this.state.classes}>{this.props.name}</div>
+        <div className={this.state.classes} style={style}>
+          <div className="course-code">{this.props.course_code}</div>
+        </div>
       </React.Fragment>
     );
   }

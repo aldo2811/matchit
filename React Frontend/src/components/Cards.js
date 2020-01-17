@@ -9,8 +9,16 @@ import RegisForm from "./RegisForm";
 class Cards extends Component {
   state = {
     cards: [],
-    curCard: { fields: { course_code: "empty" } },
-    swipe: ""
+    curCard: {
+      fields: {
+        person: "empty",
+        course_code: "empty",
+        email: "empty",
+        contact_no: "empty"
+      }
+    },
+    swipe: "",
+    currentId: ""
   };
 
   componentDidMount() {
@@ -62,7 +70,8 @@ class Cards extends Component {
         </div>
         <div id="cards">
           <Card
-            name={this.state.curCard.fields.course_code}
+            course_code={this.state.curCard.fields.course_code}
+            image_url={this.state.curCard.fields.image_url}
             content={this.state.curCard}
             dir={this.state.swipe}
           ></Card>
